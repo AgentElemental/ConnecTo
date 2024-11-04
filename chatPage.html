@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script> -->
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/button.css">
+    <link rel="stylesheet" href="./css/chatPage.css">
+</head>
+
+<body>
+    <header>
+        <a href="index.html">
+            <h2>Vanisher</h2>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="chat.html" class="active">Chat</a></li>
+            </ul>
+        </nav>
+    </header>
+    <p id="roomId"></p>
+    <div id="chat-app">
+        <div id="message-container"></div>
+        <div id="media-input"></div>
+        <form id="form">
+            <input type="text" id="username" placeholder="Type your username..." required>
+            <input type="text" id="message-input" placeholder="Type your message..." required>
+            <button id="send-button" type="submit">Send</button>
+        </form>
+        <p id="error-message"></p>
+    </div>
+    <div class="routes">
+    </div>
+    <script src="./app/app.mjs" type="module"></script>
+</body>
+
+</html>

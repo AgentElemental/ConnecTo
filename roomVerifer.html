@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanisher</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/button.css">
+    <link rel="stylesheet" href="./css/roomVerifier.css">
+
+</head>
+
+<body>
+    <header>
+        <a href="index.html">
+            <h2>Vanisher</h2>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="chat.html" class="active">Chat</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="verifier">
+        <label for="id-verifier">Enter room id </label>
+        <input type="text" name="id-verifier" id="id-verifier-input" placeholder="room id">
+        <button id="verify-button">Verify</button>
+        <p id="error-message"></p>
+    </div>
+    <script src="./app/verifer.mjs" type="module"></script>
+</body>
+
+</html>
