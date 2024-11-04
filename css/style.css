@@ -1,3 +1,5 @@
-h1{
-    font-family: 'Times New Roman', Times, serif;
+h1 {
+    font-size: 2.5rem; /* Larger font size for headings */
+    text-align: center; /* Centered headings */
+    color: #4CAF50; /* Reflect the primary theme color */
 }
