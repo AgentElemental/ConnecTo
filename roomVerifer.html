@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vanisher</title>
+    <title>ConnecTo</title>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <link rel="stylesheet" href="./css/main.css">
@@ -16,7 +16,7 @@
 <body>
     <header>
         <a href="index.html">
-            <h2>Vanisher</h2>
+            <h2>ConnecTo</h2>
         </a>
         <nav>
             <ul>
@@ -29,8 +29,10 @@
     <div id="verifier">
         <label for="id-verifier">Enter room id </label>
         <input type="text" name="id-verifier" id="id-verifier-input" placeholder="room id">
-        <button id="verify-button">Verify</button>
-        <p id="error-message"></p>
+        <center>
+            <button id="verify-button">Verify</button>
+            <p id="error-message"></p>
+        </center>
     </div>
     <script src="./app/verifer.mjs" type="module"></script>
 </body>
