@@ -1,53 +1,21 @@
-button{
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #4CAF50;
+button {
+    margin: 20px;
+    padding: 10px 20px;
+    background-color: #28a745; /* Slightly modified green */
     color: white;
     border: none;
+    border-radius: 5px; /* Rounded corners */
     cursor: pointer;
-    align-items: center;
-    transform: translate(50,50);
+    transition: background-color 0.3s, transform 0.3s; /* Added transition for smooth hover effects */
 }
-button:hover{
-    background-color: #45a049;
-    padding: 15px;
-    border: 3px solid;
-    animation-name: borderColor;
-    transition: all;
-    animation-duration: 10s;
+
+button:hover {
+    background-color: #218838; /* Darker green on hover */
+    transform: scale(1.05); /* Scale effect on hover */
 }
-@keyframes borderColor{
-    0%{
-        border-color: red;
-    }
-    10%{
-        border-color: yellow;
-    }
-    20%{
-        border-color: green;
-    }
-    30%{
-        border-color: orange;
-    }
-    40%{
-        border-color: purple;
-    }
-    50%{
-        border-color: pink;
-    }
-    60%{
-        border-color: cyan;
-    }
-    70%{
-        border-color: magenta;
-    }
-    80%{
-        border-color: brown;
-    }
-    90%{
-        border-color: violet;
-    }
-    100%{
-        border-color: blue;
-    }
+
+/* Optional: Animate border color transitions */
+@keyframes borderColor {
+    0%, 100% { border-color: #4CAF50; }
+    50% { border-color: #ff007f; }
 }
