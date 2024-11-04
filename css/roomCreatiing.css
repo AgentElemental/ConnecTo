@@ -1,8 +1,14 @@
-#room-id{
-    width: 200px;
+#room-id, #create-room {
+    width: 250px;
     padding: 10px;
     margin-top: 20px;
     font-size: 18px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid #4CAF50; /* Make border color match the theme */
+    border-radius: 5px; /* Round corners */
+    background-color: #1f1f1f; /* Background color */
+    color: white; /* Text color */
+}
+
+#room-id {
+    text-align: center; /* Center the room ID */
 }
