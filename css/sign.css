@@ -1,0 +1,95 @@
+/* Styling and positioning the Sign In button in the header */
+#signin-link {
+    margin-left: auto;
+}
+
+#signin-button {
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#signin-button:hover {
+    background-color: #45a049;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#profile-pic {
+    display: none; /* Hidden until signed in */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Makes the image circular */
+    border: 2px solid green; /* Green border around the profile picture */
+    margin-left: 10px; /* Adjust spacing if needed */
+    vertical-align: middle;
+}
+
+/* Header styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+}
+
+header h2 {
+    margin: 0;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-left: 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+    /* Stack header items vertically on mobile */
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    #signin-button {
+        margin-top: 10px;
+        align-self: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further adjustments for smaller screens */
+    header h2 {
+        font-size: 1.5em;
+    }
+
+    #signin-button {
+        padding: 10px 20px;
+        font-size: 0.9em;
+        width: 100%; /* Make the sign-in button full width */
+    }
+}
