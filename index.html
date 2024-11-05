@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +7,7 @@
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/button.css">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/sign.css">
 </head>
 
 <body>
@@ -22,7 +22,12 @@
                 <li><a href="chat.html">Chat</a></li>
             </ul>
         </nav>
+        <a id="signin-link">
+            <button id="signin-button">Sign In</button>
+        <img id="profile-pic" alt="Profile Picture">
+        </a>
     </header>
+
     <center>
         <h1>Welcome to ConnecTo</h1>
         <a href="roomCreatingPage.html">
@@ -32,6 +37,10 @@
             <button>Join a room</button>
         </a>
     </center>
-</body>
 
+    <!-- Firebase configuration and script -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script type="module" src="./js/authentication.mjs"></script>
+</body>
 </html>
