@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/button.css">
     <link rel="stylesheet" href="./css/roomVerifier.css">
+    <link rel="stylesheet" href="./css/sign.css">
 
 </head>
 
@@ -25,6 +26,10 @@
                 <li><a href="chat.html" class="active">Chat</a></li>
             </ul>
         </nav>
+        <a id="signin-link">
+            <button id="signin-button">Sign In</button>
+        <img id="profile-pic" alt="Profile Picture">
+        </a>
     </header>
     <div id="verifier">
         <label for="id-verifier">Enter room id </label>
@@ -35,6 +40,11 @@
         </center>
     </div>
     <script src="./app/verifer.mjs" type="module"></script>
+    <!-- Firebase configuration and script -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script type="module" src="./js/authentication.mjs"></script>
+
 </body>
 
 </html>
