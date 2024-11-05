@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/button.css">
     <link rel="stylesheet" href="./css/chat.css">
+    <link rel="stylesheet" href="./css/sign.css">
 </head>
 
 <body>
@@ -22,6 +23,10 @@
                 <li><a href="chat.html" class="active">Chat</a></liclass="active">
             </ul>
         </nav>
+        <a id="signin-link">
+            <button id="signin-button">Sign In</button>
+        <img id="profile-pic" alt="Profile Picture">
+        </a>
     </header>
     <div class="content-box">
         <h1>Click any one of the buttons below</h1>
@@ -38,6 +43,12 @@ Click on "Join a room" to join in a room, it will ask you to enter the room id t
         <button>Join a room</button>
     </a>
     </center>
+
+    <!-- Firebase configuration and script -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script type="module" src="./js/authentication.mjs"></script>
+
 </body>
 
 </html>
