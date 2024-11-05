@@ -7,6 +7,7 @@
     <title>ConnecTo</title>
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/about.css">
+    <link rel="stylesheet" href="./css/sign.css">
 </head>
 
 <body>
@@ -21,6 +22,10 @@
                 <li><a href="chat.html">Chat</a></li>
             </ul>
         </nav>
+        <a id="signin-link">
+            <button id="signin-button">Sign In</button>
+        <img id="profile-pic" alt="Profile Picture">
+        </a>
     </header>
     <div class="content-box">
         <h1>Welcome to the About Page</h1>
@@ -35,6 +40,11 @@ Thanks for visiting our website
     </pre>
     </div>
 
+
+    <!-- Firebase configuration and script -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script type="module" src="./js/authentication.mjs"></script>
 </body>
 
 </html>
