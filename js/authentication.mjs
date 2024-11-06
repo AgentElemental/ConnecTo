@@ -1,35 +1,34 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js";
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
 import { firebaseConfig } from "./firebaseConfig.mjs";
+firebase.initializeApp(firebaseConfig);
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
+const button = document.querySelector("#signin-button");
+const div = document.createElement("div");
+const image = document.querySelector("img");
 
-// Select button and profile picture elements
-const button = document.getElementById("signin-button");
-const profilePic = document.getElementById("profile-pic");
-
-// Click event listener for sign-in
-button.addEventListener("click", async () => {
+button.addEventListener("click", () => {
   try {
-    await signInWithPopup(auth, provider);
+    firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
   } catch (err) {
-    console.error("An error occurred during sign-in:", err);
+    console.error("An error occurred", err);
+    throw err;
   }
 });
-
-// Auth state listener to handle UI updates
-onAuthStateChanged(auth, (user) => {
+firebase.auth().onAuthStateChanged((user) => {
+  button.style.display = "none";
+  console.log(user.photoURL);
   if (user) {
-    // User is signed in, update profile picture
-    profilePic.src = user.photoURL || "default-image.png"; // Fallback image if photoURL is unavailable
-    profilePic.style.display = "inline-block"; // Show profile picture
-    button.style.display = "none"; // Hide sign-in button
+    // User is signed in, get their information
+    const uid = user.uid;
+    const email = user.email;
+    const displayName = user.displayName;
+    const photoURL = user.photoURL;
+    document.querySelector("#profile-pic").src = photoURL;
+    // div.appendChild(image);
+    console.log(
+      `User logged in: ${uid}, ${email}, ${displayName}, ${photoURL}`
+    );
+    // ... other user properties
   } else {
     // User is signed out
-    profilePic.style.display = "none";
-    button.style.display = "inline-block"; // Show sign-in button
   }
 });
