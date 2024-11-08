@@ -7,53 +7,82 @@
     <title>Document</title>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-    <!-- <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script> -->
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/button.css">
     <link rel="stylesheet" href="./css/chatPage.css">
     <link rel="stylesheet" href="./css/sign.css">
     <link rel="stylesheet" href="./css/menu.css">
     <style>
-        /* Dark and light mode styling */
-        body.dark-mode {
-            background-color: #121212;
-            color: #ffffff;
-        }
-
-        body.light-mode {
-            background-color: #ffffff;
-            color: #000000;
-        }
-
-        /* Toggle icon styling */
-        #theme-toggle {
-            cursor: pointer;
-            font-size: 1.5em;
-            margin-left: 10px;
-        }
-
-        /* Content box styling */
-        .content-box {
-            padding: 20px;
-            margin: 20px;
-            border-radius: 8px;
+        #chat-app {
             max-width: 600px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #1f1f1f;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
-        /* Dark mode content box */
-        body.dark-mode .content-box {
-            background-color: #1e1e1e;
-            color: #ffffff;
-            border: 1px solid #333333;
+        #message-container {
+            height: 400px;
+            overflow-y: auto;
+            border: 1px solid #333;
+            background-color: #2a2a2a;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
-        /* Light mode content box */
-        body.light-mode .content-box {
-            background-color: #f9f9f9;
-            color: #000000;
-            border: 1px solid #cccccc;
+        .message-container {
+            display: flex;
+            flex-direction: column;
+            max-width: 75%;
+            padding: 10px;
+            border-radius: 15px;
+            word-wrap: break-word;
         }
+
+            .message-container.sent-message-container {
+                align-self: flex-end;
+                text-align: right;
+            }
+
+            .message-container.received-message-container {
+                align-self: flex-start;
+                text-align: left;
+            }
+
+        /* Profile picture with green border */
+        .profile-pic {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid #4CAF50;
+            margin-bottom: 5px;
+        }
+
+        .username {
+            font-size: 0.85em;
+            color: #aaaaaa;
+            margin-bottom: 5px;
+        }
+
+        .sent-message {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 15px 15px 0 15px;
+        }
+
+        .received-message {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 15px 15px 15px 0;
+        }
+
     </style>
 </head>
 
@@ -85,10 +114,12 @@
     </header>
     <p id="roomId"></p>
     <div id="chat-app">
-        <div id="message-container"></div>
-        <div id="media-input"></div>
+        <div id="message-container">
+            <!-- Messages will be dynamically generated here -->
+        </div>
+
+        <!-- Message input form -->
         <form id="form">
-            <input type="text" id="username" placeholder="Type your username..." required>
             <input type="text" id="message-input" placeholder="Type your message..." required>
             <button id="send-button" type="submit">Send</button>
         </form>
@@ -104,33 +135,33 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script type="module" src="./js/authentication.mjs"></script>
     <script>
-        // Set default theme to dark mode
+        // Set initial theme based on saved preference or default to dark mode
         document.addEventListener('DOMContentLoaded', function () {
-            const userPrefersDark = localStorage.getItem('theme') === 'dark' || !localStorage.getItem('theme');
-            if (userPrefersDark) {
-                document.body.classList.add('dark-mode');
-                document.getElementById('theme-toggle').textContent = '🌞';
-            } else {
-                document.body.classList.add('light-mode');
-                document.getElementById('theme-toggle').textContent = '🌙';
-            }
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            setTheme(savedTheme);
         });
 
-        // Toggle theme between dark and light
+        // Theme toggle function
         function toggleTheme() {
-            const isDarkMode = document.body.classList.contains('dark-mode');
-            if (isDarkMode) {
-                document.body.classList.remove('dark-mode');
-                document.body.classList.add('light-mode');
-                document.getElementById('theme-toggle').textContent = '🌙';
-                localStorage.setItem('theme', 'light');
-            } else {
-                document.body.classList.remove('light-mode');
+            const currentTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+            localStorage.setItem('theme', newTheme); // Save user preference
+        }
+
+        // Function to set the theme and toggle icon
+        function setTheme(theme) {
+            if (theme === 'dark') {
                 document.body.classList.add('dark-mode');
+                document.body.classList.remove('light-mode');
                 document.getElementById('theme-toggle').textContent = '🌞';
-                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.add('light-mode');
+                document.body.classList.remove('dark-mode');
+                document.getElementById('theme-toggle').textContent = '🌙';
             }
         }
+
     </script>
 
 </body>
