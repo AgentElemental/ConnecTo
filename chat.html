@@ -9,6 +9,49 @@
     <link rel="stylesheet" href="./css/button.css">
     <link rel="stylesheet" href="./css/chat.css">
     <link rel="stylesheet" href="./css/sign.css">
+    <link rel="stylesheet" href="./css/menu.css">
+    <style>
+        /* Dark and light mode styling */
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        body.light-mode {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        /* Toggle icon styling */
+        #theme-toggle {
+            cursor: pointer;
+            font-size: 1.5em;
+            margin-left: 10px;
+        }
+
+        /* Content box styling */
+        .content-box {
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Dark mode content box */
+        body.dark-mode .content-box {
+            background-color: #1e1e1e;
+            color: #ffffff;
+            border: 1px solid #333333;
+        }
+
+        /* Light mode content box */
+        body.light-mode .content-box {
+            background-color: #f9f9f9;
+            color: #000000;
+            border: 1px solid #cccccc;
+        }
+    </style>
 </head>
 
 <body>
@@ -16,38 +59,79 @@
         <a href="index.html">
             <h2>ConnecTo</h2>
         </a>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="chat.html" class="active">Chat</a></liclass="active">
-            </ul>
-        </nav>
-        <a id="signin-link">
-            <button id="signin-button">Sign In</button>
-        <img id="profile-pic" alt="Profile Picture">
-        </a>
+        <center>
+            <!-- Hamburger menu icon for mobile view -->
+            <div id="hamburger-menu" onclick="toggleMenu()">
+                &#9776; <!-- Hamburger icon -->
+            </div>
+            <!-- Navigation menu and sign-in button -->
+            <nav id="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="chat.html" class="active">Chat</a></li>
+                </ul>
+                <a id="signin-link">
+                    <button id="signin-button">Sign In</button>
+                    <img id="profile-pic" alt="Profile Picture">
+                </a>
+                <!-- Theme toggle icon placed next to Sign In button -->
+                <div id="theme-toggle" onclick="toggleTheme()">🌙</div>
+            </nav>
+        </center>
     </header>
-    <div class="content-box">
-        <h1>Click any one of the buttons below</h1>
-        <pre>
+    <center>
+        <div class="content-box">
+            <h1>Click any one of the buttons below</h1>
+            <pre>
         Click on "Create a room" to create a room, it will provide a 8 character of both numbers and string id to you and you can share that id with the friends to join in the chatting room.
 Click on "Join a room" to join in a room, it will ask you to enter the room id that you have shared with the friends.
     </pre>
-    </div>
+        </div>
+    </center>
+
     <center>
-    <a href="roomCreatingPage.html">
-        <button>Create a room</button>
-    </a>
-    <a href="roomVerifer.html">
-        <button>Join a room</button>
-    </a>
+        <a href="roomCreatingPage.html">
+            <button>Create a room</button>
+        </a>
+        <a href="roomVerifer.html">
+            <button>Join a room</button>
+        </a>
     </center>
 
     <!-- Firebase configuration and script -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script type="module" src="./js/authentication.mjs"></script>
+    <script>
+        // Set default theme to dark mode
+        document.addEventListener('DOMContentLoaded', function () {
+            const userPrefersDark = localStorage.getItem('theme') === 'dark' || !localStorage.getItem('theme');
+            if (userPrefersDark) {
+                document.body.classList.add('dark-mode');
+                document.getElementById('theme-toggle').textContent = '🌞';
+            } else {
+                document.body.classList.add('light-mode');
+                document.getElementById('theme-toggle').textContent = '🌙';
+            }
+        });
+
+        // Toggle theme between dark and light
+        function toggleTheme() {
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            if (isDarkMode) {
+                document.body.classList.remove('dark-mode');
+                document.body.classList.add('light-mode');
+                document.getElementById('theme-toggle').textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.body.classList.remove('light-mode');
+                document.body.classList.add('dark-mode');
+                document.getElementById('theme-toggle').textContent = '🌞';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+    </script>
 
 </body>
 
