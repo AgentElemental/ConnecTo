@@ -45,7 +45,49 @@
 
     #signin-link {
         display: flex;
-        justify-content: center;
         align-items: center;
+        gap: 10px; /* Space between items */
+    }
+    #signin-button {
+        margin-right: 5px;
     }
 }
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.light-mode {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Chat container styles for both themes */
+#chat-app.dark-mode {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+#chat-app.light-mode {
+    background-color: #f9f9f9;
+    color: #000000;
+}
+
+/* Customize message container for both themes */
+.sent-message {
+    background-color: #4CAF50; /* Unchanged */
+    color: #ffffff;
+}
+
+.received-message {
+    background-color: #333333; /* Darker background for dark mode */
+    color: #ffffff;
+}
+#theme-toggle {
+    cursor: pointer;
+    font-size: 1.5em;
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+}
+
