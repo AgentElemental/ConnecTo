@@ -9,7 +9,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/button.css">
-    <link rel="stylesheet" href="./css/roomCreatiing.css">
+    <link rel="stylesheet" href="./css/roomCreating.css">
     <link rel="stylesheet" href="./css/sign.css">
     <link rel="stylesheet" href="./css/menu.css">
     <style>
@@ -31,27 +31,111 @@
             margin-left: 10px;
         }
 
-        /* Content box styling */
-        .content-box {
-            padding: 20px;
-            margin: 20px;
-            border-radius: 8px;
-            max-width: 600px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* Header styling for dark and light modes */
+        header {
+            width: 100%;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        /* Dark mode content box */
-        body.dark-mode .content-box {
+        body.dark-mode header {
             background-color: #1e1e1e;
             color: #ffffff;
-            border: 1px solid #333333;
         }
 
-        /* Light mode content box */
-        body.light-mode .content-box {
+        body.light-mode header {
+            background-color: #f1f1f1;
+            color: #000000;
+        }
+
+        /* Styling for room-id element */
+        #room-id {
+            font-size: 1.2em;
+            padding: 10px;
+            margin: 20px auto;
+            border-radius: 8px;
+            max-width: 80%;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Dark mode styling for room-id */
+        body.dark-mode #room-id {
+            background-color: #333333;
+            color: #ffffff;
+            border: 1px solid #555555;
+        }
+
+        /* Light mode styling for room-id */
+        body.light-mode #room-id {
             background-color: #f9f9f9;
             color: #000000;
             border: 1px solid #cccccc;
+        }
+
+        /* Nav menu text color for light mode */
+        body.light-mode #nav-menu a {
+            color: black;
+        }
+
+        /* Mobile view hamburger menu */
+        @media (max-width: 768px) {
+            #hamburger-menu {
+                display: inline-block;
+            }
+
+            #nav-menu {
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 10px;
+                background-color: inherit;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                transition: background-color 0.3s, color 0.3s;
+                width: 200px;
+                text-align: center;
+            }
+
+            /* Dark mode for dropdown menu */
+            body.dark-mode #nav-menu {
+                background-color: #1e1e1e;
+                color: #ffffff;
+                border: 1px solid #333333;
+            }
+
+            /* Light mode for dropdown menu */
+            body.light-mode #nav-menu {
+                background-color: #f9f9f9;
+                color: #000000;
+                border: 1px solid #cccccc;
+            }
+
+            /* Dropdown menu links */
+            #nav-menu ul {
+                list-style-type: none;
+                padding: 10px;
+                margin: 0;
+            }
+
+                #nav-menu ul li {
+                    padding: 10px 0;
+                }
+
+                    #nav-menu ul li a {
+                        color: inherit;
+                        text-decoration: none;
+                    }
+
+            /* Center-align theme toggle button in dropdown */
+            #nav-menu #theme-toggle {
+                display: block;
+                margin: 10px auto;
+            }
         }
     </style>
 </head>
@@ -62,16 +146,12 @@
             <h2>ConnecTo</h2>
         </a>
         <center>
-            <!-- Hamburger menu icon for mobile view -->
-            <div id="hamburger-menu" onclick="toggleMenu()">
-                &#9776; <!-- Hamburger icon -->
-            </div>
-            <!-- Navigation menu and sign-in button -->
+            <div id="hamburger-menu" onclick="toggleMenu()">&#9776;</div>
             <nav id="nav-menu">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="chat.html" class="active">Chat</a></li>
+                    <li><a href="chat.html">Chat</a></li>
                 </ul>
                 <a id="signin-link">
                     <button id="signin-button">Sign In</button>
@@ -82,19 +162,13 @@
             </nav>
         </center>
     </header>
+    
     <center>
         <h1>Create Room</h1>
-    </center>
-    <p id="room-id"></p>
-    <center>
-        <button id="create-room">Create Room Id</button>
+        <p id="room-id"></p> 
+        <button id="create-room">Create Room ID</button>
     </center>
 
-    <!-- Firebase configuration and script -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script type="module" src="./js/authentication.mjs"></script>
-    <script src="./js/menu.js"></script>
     <script>
         // Set default theme to dark mode
         document.addEventListener('DOMContentLoaded', function () {
@@ -123,9 +197,14 @@
                 localStorage.setItem('theme', 'dark');
             }
         }
+
+        // Toggle hamburger menu display
+        function toggleMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.style.display = navMenu.style.display === 'block' ? 'none' : 'block';
+        }
     </script>
-
+    
+    <script src="./app/ids.mjs" type="module"></script>
 </body>
-<script src="./app/ids.mjs" type="module"></script>
-
 </html>
