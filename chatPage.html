@@ -13,6 +13,43 @@
     <link rel="stylesheet" href="./css/sign.css">
     <link rel="stylesheet" href="./css/menu.css">
     <style>
+        /* Dark and light mode styling */
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        body.light-mode {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        /* Toggle icon styling */
+        #theme-toggle {
+            cursor: pointer;
+            font-size: 1.5em;
+            margin-left: 10px;
+        }
+
+        /* Header styling for dark and light modes */
+        header {
+            width: 100%;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode header {
+            background-color: #1e1e1e;
+            color: #ffffff;
+        }
+
+        body.light-mode header {
+            background-color: #f1f1f1;
+            color: #000000;
+        }
         #chat-app {
             max-width: 600px;
             margin: 40px auto;
@@ -82,6 +119,100 @@
             padding: 10px 15px;
             border-radius: 15px 15px 15px 0;
         }
+        /* Nav menu text color for light mode */
+        body.light-mode #nav-menu a {
+            color: black;
+        }
+
+        /* Mobile view hamburger menu */
+        @media (max-width: 768px) {
+            #hamburger-menu {
+                display: inline-block;
+            }
+
+            #nav-menu {
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 10px;
+                background-color: inherit;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                transition: background-color 0.3s, color 0.3s;
+                width: 200px;
+                text-align: center;
+            }
+
+            /* Dark mode for dropdown menu */
+            body.dark-mode #nav-menu {
+                background-color: #1e1e1e;
+                color: #ffffff;
+                border: 1px solid #333333;
+            }
+
+            /* Light mode for dropdown menu */
+            body.light-mode #nav-menu {
+                background-color: #f9f9f9;
+                color: #000000;
+                border: 1px solid #cccccc;
+            }
+
+            /* Dropdown menu links */
+            #nav-menu ul {
+                list-style-type: none;
+                padding: 10px;
+                margin: 0;
+            }
+
+                #nav-menu ul li {
+                    padding: 10px 0;
+                }
+
+                    #nav-menu ul li a {
+                        color: inherit;
+                        text-decoration: none;
+                    }
+
+            /* Center-align theme toggle button in dropdown */
+            #nav-menu #theme-toggle {
+                display: block;
+                margin: 10px auto;
+            }
+        }
+        /* Light mode styling for chat-app */
+        body.light-mode #chat-app {
+            background-color: #f9f9f9; /* Light background for chat app */
+            border: 1px solid #cccccc; /* Light border */
+            color: #000000; /* Text color */
+        }
+
+        /* Light mode styling for message container */
+        body.light-mode #message-container {
+            background-color: #ffffff; /* White background */
+            border: 1px solid #cccccc; /* Light grey border */
+        }
+
+        /* Light mode styling for message */
+        body.light-mode .message-container.sent-message-container .sent-message {
+            background-color: #4CAF50; /* Green background */
+            color: white; /* White text */
+        }
+
+        body.light-mode .message-container.received-message-container .received-message {
+            background-color: #e0e0e0; /* Light grey background for received messages */
+            color: #000; /* Black text for received messages */
+        }
+
+        /* Input field style for light mode */
+        body.light-mode #message-input {
+            background-color: #ffffff; /* White background */
+            color: #000000; /* Black text */
+            border: 1px solid #cccccc; /* Light border */
+        }
+
+            body.light-mode #message-input::placeholder {
+                color: #888888; /* Light grey placeholder text */
+            }
 
     </style>
 </head>
