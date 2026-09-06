@@ -1,18 +1,16 @@
-/* Hide the menu and show hamburger icon on mobile */
 #nav-menu {
     display: flex;
     align-items: center;
 }
 
 #profile-pic {
-    display: none; /* Hide by default */
+    display: none; 
     width: 40px;
     height: 40px;
     border-radius: 50%;
     border: 2px solid green;
 }
 
-/* Hamburger icon styling */
 #hamburger-menu {
     display: none;
     font-size: 24px;
@@ -21,7 +19,7 @@
 
 @media (max-width: 768px) {
     #nav-menu {
-        display: none; /* Hide the menu by default in mobile */
+        display: none; 
         flex-direction: column;
         position: absolute;
         top: 60px;
@@ -40,13 +38,13 @@
     }
 
     #hamburger-menu {
-        display: inline-block; /* Show hamburger icon in mobile */
+        display: inline-block; 
     }
 
     #signin-link {
         display: flex;
         align-items: center;
-        gap: 10px; /* Space between items */
+        gap: 10px; 
     }
     #signin-button {
         margin-right: 5px;
@@ -62,7 +60,6 @@ body.light-mode {
     color: #000000;
 }
 
-/* Chat container styles for both themes */
 #chat-app.dark-mode {
     background-color: #1e1e1e;
     color: #ffffff;
@@ -73,14 +70,13 @@ body.light-mode {
     color: #000000;
 }
 
-/* Customize message container for both themes */
 .sent-message {
-    background-color: #4CAF50; /* Unchanged */
+    background-color: #4CAF50; 
     color: #ffffff;
 }
 
 .received-message {
-    background-color: #333333; /* Darker background for dark mode */
+    background-color: #333333; 
     color: #ffffff;
 }
 #theme-toggle {

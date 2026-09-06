@@ -1,23 +1,20 @@
-/* Button Styling */
 button {
     padding: 12px 20px;
     font-size: 16px;
     background-color: #4CAF50;
     color: #fff;
-    border: 3px solid #4CAF50; /* Start with matching border color */
+    border: 3px solid #4CAF50; 
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
-    animation: borderColor 3s linear infinite; /* Apply animation */
+    animation: borderColor 3s linear infinite; 
 }
 
-    /* Hover Effect */
     button:hover {
         background-color: #45a049;
         transform: scale(1.05);
     }
 
-/* Border Color Animation Keyframes */
 @keyframes borderColor {
     0% {
         border-color: #4CAF50;
